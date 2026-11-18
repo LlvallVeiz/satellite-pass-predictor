@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "satellite-pass-predictor"
+version = "1.0.0"
+description = "Predict satellite passes over ground stations: Kepler + secular-J2 propagation from TLEs, topocentric look angles, Doppler shift, footprint geometry, and Markdown/HTML reports."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+satellite-pass-predictor = "satellite_pass_predictor.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
